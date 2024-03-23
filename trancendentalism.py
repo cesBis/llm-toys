@@ -10,11 +10,13 @@ client = AzureOpenAI(
     azure_deployment = azure_paramater['chat_model_id']
 )
 
-prompt = "Explain the transcendentalist school of thought at a third grade reading level"
-
-response = client.chat.completions.create(
-    model = azure_paramater['cheap_chat_model_name'],
-    messages = [{"role" : "assistant", "content" : prompt}],
-)
-
-print(response.choices[0].message.content)
+text_output = open('trancendentalism.md', 'a')
+for number in range(1, 13, 1):
+    prompt = f'Explain the transcendentalist school of thought at a grade {number} reading level'
+    text_output.write(f'\n\n## {prompt}\n\n')
+    response = client.chat.completions.create(
+        model = azure_paramater['cheap_chat_model_name'],
+        messages = [{"role" : "assistant", "content" : prompt}],
+    )
+    text_output.write(response.choices[0].message.content)
+text_output.close()
