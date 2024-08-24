@@ -16,7 +16,10 @@ for number in range(1, 13, 1):
     text_output.write(f'\n\n## {prompt}\n\n')
     response = client.chat.completions.create(
         model = azure_paramater['cheap_chat_model_name'],
-        messages = [{"role" : "assistant", "content" : prompt}],
+        # https://platform.openai.com/docs/guides/chat-completions/message-roles
+        messages = [
+            {"role" : "user", "content" : prompt}
+        ],
     )
     text_output.write(response.choices[0].message.content)
 text_output.close()
