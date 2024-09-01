@@ -10,7 +10,7 @@ for number in range(1, 13, 1):
     prompt = f'Explain the transcendentalist school of thought at a grade {number} reading level'
     text_output.write(f'\n\n## {prompt}\n\n')
     response = client.chat(
-        model = "llama3.1",
+        model = "smollm:135m",
         # https://platform.openai.com/docs/guides/chat-completions/message-roles
         messages = [
             {"role" : "user", "content" : prompt}
