@@ -1,3 +1,4 @@
 pyenv/
 .secrets/
 __pycache__/
+*.json

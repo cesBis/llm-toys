@@ -1,10 +1,13 @@
 # Playing with LLMs
 
-Excerpting work from [this workshop](https://github.com/cesBis/intro-to-intelligent-apps/tree/workshop) and going my own way with little parts of it.
+Using [Ollama](https://github.com/ollama/ollama) because it's free and can be run on my own hardware.
 
-Using Python 3.10.12 and `python -m venv pyenv; pip install -r requirements.txt`.
+## todo
 
-## to-do
+- [ ] compare model responses and runtimes
+- [ ] inspect [temperature paramater](https://github.com/ollama/ollama-python/blob/89e8b74f1ea6b1af8a9df2e00e120a2a7e430311/ollama/_types.py#L170C3-L170C14)
 
-- [ ] play with temperature paramater
-- [x] swap out azure api calls with a local llama instance
+## other links
+
+- chat completion [message roles](https://platform.openai.com/docs/guides/chat-completions/message-roles)
+- [chat vs generate](https://github.com/ollama/ollama/issues/2774)
