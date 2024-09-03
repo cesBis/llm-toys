@@ -2,7 +2,10 @@ import ollama
 import json
 
 def write_response(prompt,
+                   system_prompt,
                    model,
+                   options = {},
+                   json_name = 'response',
                    client = ollama.Client(
                                 host='http://llama.moo:11434',
                                 timeout=8000,
@@ -10,24 +13,10 @@ def write_response(prompt,
                    ):
 
     response = client.generate(
+        prompt = prompt,
+        system = system_prompt,
         model = model,
-        prompt = prompt
+        options = options,
     )
 
-    with open(model + ".json", "w") as outfile: 
-        json.dump(response, outfile)
-
-models = [
-    'tinyllama:latest',
-    'smollm:135m',
-    'llama3.1:latest',
-    'codegemma:2b',
-]
-
-prompt = """
-Respond with a single word.
-Where are you?
-"""
-
-for model in models:
-    write_response(prompt, model)
+    json.dump(response, open(json_name + '.json', 'w'))
