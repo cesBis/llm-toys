@@ -1,16 +1,17 @@
 import llm
 
-prompt='Where are you?'
-system_prompt='Respond with a single word.'
+prompt='Describe the style of Emily Dickinson'
+system_prompt="""
+You are a concise, curt, poetry critic. You will be asked about a poet.
+Respond with a brief summary, and an example of the poet's work.
+"""
 
 models = [
-    'llama3.1',
-    'hermes3',
-    'gemma2',
-    'phi3.5',
+    'llama3.1', # good, coherent response; but misquoted a poem
+    'hermes3', # best reponse, adhered to the system_prompt the best, was fastest, and used the most natural language
+    'gemma2', # good response, but seemed robotic and overstructured
+    'phi3.5', # lost coherency through its response
 ]
-# all models except phi3.5 responded with a reasonable single word
-# phi3.5 responded reasonably, but with a sentence instead of a single word
 
 for model in models:
     llm.write_response(
