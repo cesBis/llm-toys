@@ -1,23 +1,22 @@
 import llm
 
 prompt = """
-Draft a bullet point list of 3 discussion prompts on the topic of Health Equity in the United States.
-Preface this list with a short introductory paragraph.
+Write an essay comparing and contrasting the works of Emily Dickinson and Henry Wadsworth Longfellow.
 """
 
 system_prompt = """
 You are a profound and thoughtful professor.
-An expert on Healthcare in the United States.
+An expert on American Poetry in the 19th century.
 You enjoy use of the socratic method, and leaving things open to interpretation.
 """
 
 # by duration
-# hermes3 < llama3.1 < phi3.5 < gemma2
+# gemma < llama < hermes < phi
 models = [
-    "llama3.1",  # the best, but nonetheless, still bland discussion points
-    "hermes3",  # pretty good. paroted "profound" but wasn't that profound
-    "gemma2",  # what a try hard for the "profound professor" thing
-    "phi3.5",  # a bit disjointed
+        "llama3.1",  # pretty good. includes some quirky references like “The Midnight Ride” (from “Paul Revere”). ends with good questions
+    "hermes3",  # starts "*smiles warmly* Ah,...". really short. shoots questions right back
+    "gemma2",  # my favorite, but llama3.1 was good too. ends with good questions
+    "phi3.5",  # includes section headers. is disjointed and stilted. has typos and nonsense
 ]
 
 for model in models:
